@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  app-backend:
+    container_name: app-backend
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www
+      - ./servers:/etc/nginx/conf.d
+    networks:
+      - app-network
+    depends_on:
+      - mariadb-app
+
+  mariadb-app:
+    image: mariadb:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - .data/dbdata:/var/lib/mysql
+    environment:
+      MARIADB_DATABASE: appbackend
+      MARIADB_ROOT_PASSWORD: secret
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+
