@@ -7,59 +7,126 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# `Desafio GazinTech Backend`
+# ** API Developer (Backend)**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Projeto realizado com intuito de avaliação tecnica, o propósito do teste é analisar boas práticas, lógica de programação, reaproveitamento de código e conhecimento geral das tecnologias escolhidas e utilizadas.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+### **Tecnologias Utilizadas no projeto**
+Docker | Laravel 9 | PHP 8.1 | Heroku
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Ferramentas para auxilio
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+[Postman](https://insomnia.rest/download) - Testes API
 
-## Laravel Sponsors
+[Document API](https://documenter.getpostman.com/view/24012300/2s84DoTPia) - Documentação da API
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+[Beekeeper](https://www.beekeeperstudio.io/) - Database Manager
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### **Instalação**
 
-## Contributing
+#### **1.** Clone do repositório
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+git clone https://github.com/whande1992/gazinBackend.git && cd gazinBackend/
+```
 
-## Code of Conduct
+## Docker
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Linux (Ubuntu 22.04)
 
-## Security Vulnerabilities
+Atualização do sistema operacional
+```bash 
+sudo apt update
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Atualização de dependencias
+```bash 
+sudo apt install apt-transport-https curl gnupg-agent ca-certificates software-properties-common -y
+```
 
-## License
+Atualização do sistema operacional
+```bash 
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# gazinBackend
+###Install Docker
+```bash 
+sudo apt update
+```
+
+Isso instala o Docker e todos os pacotes, bibliotecas e dependências adicionais exigidos pelo Docker e pacotes associados.
+
+```bash 
+sudo apt install docker-ce docker-ce-cli containerd.io -y
+```
+
+Depois que o comando for executado com êxito, considere adicionar o usuário conectado no momento ao grupo docker. Isso permite que você execute o docker sem invocar o sudo.
+
+```bash 
+sudo usermod -aG docker $USER
+```
+```bash 
+newgrp docker
+```
+
+Confirme que o Docker esta instalado
+```bash 
+docker version
+```
+
+Se, por algum motivo, o Docker não estiver em execução, basta executar o seguinte comando:
+```bash 
+sudo systemctl start docker
+```
+
+
+Installing Docker Compose
+```bash 
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+Em seguida, defina as permissões corretas para que o docker-composecomando seja executável:
+```bash 
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+Para verificar se a instalação foi bem-sucedida, você pode executar:
+```bash 
+docker-compose --version
+```
+
+Em seguida, defina as permissões corretas para que o docker-composecomando seja executável:
+```bash 
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+
+## Provisionando serviços
+```
+docker compose up -d --build
+```
+#### **2.** Instale as dependências do projeto
+```     
+docker exec -it app-backend composer install 
+```
+
+#### Configurando cache
+```     
+docker exec -it app-backend php artisan config:cache 
+```
+
+#### Migrations e seed
+```     
+docker exec -it app-backend php artisan migrate --seed
+```
+
+#### Testes
+```     
+docker exec -it app-backend php artisan test
+```
+
+http://127.0.0.1:8080/api/v1 (http://127.0.0.1:8080/api/v1)
