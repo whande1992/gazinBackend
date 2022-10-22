@@ -2,6 +2,7 @@
 
 
 # `Desafio GazinTech Backend`
+###Heroku: https://whande1developerbackend.herokuapp.com/api/v1
 # **API Developer (Backend)**
 
 Projeto realizado com intuito de avaliação tecnica, o propósito do teste é analisar boas práticas, lógica de programação, reaproveitamento de código e conhecimento geral das tecnologias escolhidas e utilizadas.
