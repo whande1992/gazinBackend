@@ -123,4 +123,5 @@ docker exec -it app-backend php artisan test
 ```
 
 http://127.0.0.1:8080/api/v1
+    
 [Document API](https://documenter.getpostman.com/view/24012300/2s84DoTPia) - Documentação da API
